@@ -2,14 +2,19 @@ package com.example.property.service;
 
 
 import com.example.property.entity.User;
+import org.springframework.ui.Model;
 
-import java.util.Optional;
-
+import javax.servlet.http.HttpServletRequest;
 
 
 public interface UserService {
-    Optional<User> findByEmail(String email);
+    User findByEmail(String email);
     String save(User user);
-    String save(String email);
+    User save(String email);
+  public void updateResetPasswordToken(String token, String email);
+
+   public String showResetPasswordForm(String token, Model model);
+
+    public String processResetPassword(HttpServletRequest request, Model model);
 
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-
 public interface PropertyRepository extends JpaRepository<Property, Long > {
 
 
@@ -26,4 +25,5 @@ public interface PropertyRepository extends JpaRepository<Property, Long > {
 
     List<Property> findPropertyByPurpose(String purpose);
 
+    Property findPropertyByTitle(Property title);
 }

@@ -22,12 +22,12 @@ class UserRepositoryTest {
     @Test
     public void createUsers(){
         User user = User.builder()
-                .email("ghd@gmail.com")
-                .firstName("jhlal")
-                .lastName("lolmjd")
-                .genderTitle("female")
+                .email("Babalola@gmail.com")
+                .firstName("Baba")
+                .lastName("lola")
+                .genderTitle("male")
                 .signUpAs("Landlord")
-                .password("000550")
+                .password("1234")
                 .build();
         userRepository.save(user);
     }

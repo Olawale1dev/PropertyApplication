@@ -32,7 +32,6 @@ class PropertyRepositoryTest {
                 .price("90,000,000,000,000,000")
                 .title("Mansion House")
                 .type("Mansion")
-                .url("d.jpg")
                 .build();
         propertyRepository.save(property);
     }

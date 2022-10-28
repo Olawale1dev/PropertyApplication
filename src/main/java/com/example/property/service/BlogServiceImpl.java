@@ -6,21 +6,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Optional;
 
+
+
 @Service
 public class BlogServiceImpl implements BlogService {
+    private static final String UPLOAD_DIRECTORY = "/images" ;
     @Autowired
     private BlogRepository blogRepository;
 
 
-    public Optional<Blog> deleteById(Long id){
-        Optional<Blog> deletedBlog= blogRepository.findById(id);
-        if(deletedBlog.isPresent()){
+    public Optional<Blog> deleteById(Long id) {
+        Optional<Blog> deletedBlog = blogRepository.findById(id);
+        if (deletedBlog.isPresent()) {
             blogRepository.deleteById(id);
-        }else{
+        } else {
             throw new RuntimeException("blog not found");
         }
         return deletedBlog;
@@ -70,24 +81,24 @@ public class BlogServiceImpl implements BlogService {
         return update;
     }
 
-    /* public ModelAndView upload(@RequestParam CommonsMultipartFile url, HttpSession session){
-        String path = session.getServletContext().getRealPath("/");
+    public ModelAndView save(@RequestParam CommonsMultipartFile url, HttpSession session)
+            throws Exception {
+        ServletContext context = session.getServletContext();
+        String path = context.getRealPath(UPLOAD_DIRECTORY);
         String filename = url.getOriginalFilename();
-        System.out.println(path+" "+filename);
-        try{
+        System.out.println(path + " " + filename);
+        try {
             byte barr[] = url.getBytes();
             BufferedOutputStream bout = new BufferedOutputStream(
-                    new FileOutputStream(path+"/"+filename));
+                    new FileOutputStream(new File(path + File.separator + filename)));
             bout.write(barr);
             bout.flush();
             bout.close();
 
-        }catch(Exception e){
-            System.out.println(e);}
-        return new ModelAndView("upload-success","filename", path+"/"+filename);
-
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return new ModelAndView("File successfully saved");
 
     }
-*/
-
 }

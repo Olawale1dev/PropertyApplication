@@ -2,6 +2,7 @@ package com.example.property.entity;
 
 
 import lombok.*;
+import org.springframework.hateoas.RepresentationModel;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +16,7 @@ import java.util.Collections;
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-public class User implements UserDetails {
+public class User extends RepresentationModel<User> implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,6 +32,8 @@ public class User implements UserDetails {
     private String genderTitle;
     @Column(name = "signup_as", nullable = true)
     private String signUpAs;
+    @Column(name="update_reset_password_token")
+    private String resetPasswordToken;
     private boolean accountNonLocked;
 
 

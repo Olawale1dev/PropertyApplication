@@ -22,7 +22,7 @@ public interface PropertyService {
 
     public ResponseEntity<List<Property>> findPropertyByPurpose(String purpose);
 
-    ResponseEntity<List<Property>>findAll();
+    Object findAll();
 
     Optional<Property> deleteHouse(Long id);
 }

@@ -1,7 +1,6 @@
 package com.example.property.repository;
 
 import com.example.property.entity.Blog;
-import com.example.property.entity.Property;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +13,8 @@ public interface BlogRepository extends JpaRepository<Blog, Long> {
     List<Blog> findBlogByTagName(String type);
 
     Optional<Blog> findById(Long id);
+
+
 
 
 }

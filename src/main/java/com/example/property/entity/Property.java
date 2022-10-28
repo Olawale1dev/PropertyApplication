@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.hateoas.RepresentationModel;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.persistence.*;
 
@@ -13,7 +15,7 @@ import javax.persistence.*;
 @Data
 
 @Builder
-public class Property {
+public class Property extends RepresentationModel<Property> {
 
     @Id
     @SequenceGenerator(
@@ -26,36 +28,36 @@ public class Property {
             generator = "property_sequence"
     )
     private Long id;
-    @Column(name="property_type")
+    @Column(name="property_type", nullable = false)
     private String type;
-    @Column(name="purpose")
+    @Column(name="purpose", nullable = false)
     private String purpose;
-    @Column(name="status")
+    @Column(name="status", nullable = false)
     private String status;
-    @Column(name="bedroom_number")
+    @Column(name="bedroom_number", nullable = false)
     private String bedroomNo;
-    @Column(name="bathroom_No")
+    @Column(name="bathroom_No", nullable = false)
     private String bathroomNo;
-    @Column(name="toilet_number")
+    @Column(name="toilet_number", nullable = false)
     private String toiletNo;
-    @Column(name="price")
+    @Column(name="price", nullable = false)
     private String price;
-    @Column(name="title")
+    @Column(name="title", nullable = false)
     private String title;
-    @Column(name="agent_name")
+    @Column(name="agent_name", nullable = false)
     private String agentName;
-    @Column(name="description")
+    @Column(name="description", nullable = false)
     private String description;
-    @Column(name="agent_number")
+    @Column(name="agent_number", nullable = false)
     private String agentNumber;
-    @Column(name="url")
-    private String url;
-    @Column(name="location")
+    @Column(name="url", nullable = false)
+    private CommonsMultipartFile url;
+    @Column(name="location", nullable = false)
     private String location;
-    @Column(name="locate_state")
+    @Column(name="locate_state", nullable = false)
     private String state;
-    @Column(name="locate_area")
+    @Column(name="locate_area", nullable = false)
     private String area;
-    @Column(name="locate_street")
+    @Column(name="locate_street", nullable = false)
     private String streetName;
 }

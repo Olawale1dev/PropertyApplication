@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+
 public class PropertyController {
 
 
@@ -23,8 +24,8 @@ public class PropertyController {
         model.addAttribute("property", new Property());
         return "Post form";
     }
-    @RequestMapping("/post")
-    public Property save(@RequestBody Property property){
+    @RequestMapping(value = "/post", method =RequestMethod.POST )
+    public Property save( Property property){
         Property newProperty=  propertyService.save(property);
         return  newProperty;
     }
@@ -32,7 +33,7 @@ public class PropertyController {
 
     @GetMapping("/properties")
     public ResponseEntity<List<Property>> findAll() {
-        ResponseEntity<List<Property>> list = propertyService.findAll();
+        ResponseEntity<List<Property>> list = (ResponseEntity<List<Property>>) propertyService.findAll();
         return list;
 
     }
