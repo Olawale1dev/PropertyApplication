@@ -1,4 +1,3 @@
-/*
 package com.example.property.dto;
 
 
@@ -6,8 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Arrays;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @AllArgsConstructor
@@ -29,6 +27,8 @@ import java.util.Arrays;
         private String toiletNo;
 
         private String price;
+        private String subType;
+        private String Size;
 
         private String title;
 
@@ -38,21 +38,14 @@ import java.util.Arrays;
 
         private String agentNumber;
 
-//        private String[] url;
-        private String url;
+        private MultipartFile url;
 
-        public String setUrl(String[] url){
-            String uri="";
-            Arrays.stream(url).iterator().
-            return "";
-        }
-
-        private String location;
+        private String locality;
 
         private String state;
 
         private String area;
         private String streetName;
+        private String youtubeLink;
     }
 
-*/

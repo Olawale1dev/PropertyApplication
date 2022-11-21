@@ -42,7 +42,7 @@ public class NotificationToken {
             }
 
             @Override
-            public void send(MimeMessagePreparator... mimeMessagePreparators) throws MailException {
+            public void send(MimeMessagePreparator... mimeMessagePerpetrators) throws MailException {
 
             }
 

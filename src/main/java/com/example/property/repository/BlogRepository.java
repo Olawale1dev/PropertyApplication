@@ -12,7 +12,7 @@ public interface BlogRepository extends JpaRepository<Blog, Long> {
 
     List<Blog> findBlogByTagName(String type);
 
-    Optional<Blog> findById(Long id);
+ public Optional<Blog> findById(Long  id);
 
 
 

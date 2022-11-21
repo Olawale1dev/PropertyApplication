@@ -33,7 +33,10 @@ public  abstract  class RegistrationService {
                         request.getEmail(),
                         request.getPassword(),
                         request.getGenderTitle(),
-                        request.getSignUpAs()
+                        request.getSignUpAs(),
+                        request.getState(),
+                        request.getCity(),
+                        request.getZip()
 
                 )
         );

@@ -17,5 +17,9 @@ public class RegistrationRequest {
     private  String password;
     private  String signUpAs;
     private String genderTitle;
+    private String state;
+    private String city;
+    private String zip;
+
 
 }

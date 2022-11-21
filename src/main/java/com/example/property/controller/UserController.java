@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @AllArgsConstructor
 @CrossOrigin
+
 public class UserController {
 
 
@@ -32,7 +33,7 @@ public class UserController {
     private UserServiceImpl userServiceImpl;
 
     @PostMapping("api/v1/registration")
-    public String save(@RequestBody RegistrationRequest request) {
+    public String save(@ModelAttribute("User") RegistrationRequest request) {
 
         return registrationService.register(request);
     }
@@ -64,6 +65,17 @@ public class UserController {
     @RequestMapping("/user")
     public String login(@RequestBody User user){
         return "login successfully";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model, String error, String logout) {
+        if (error != null)
+            model.addAttribute("errorMsg", "Your username and password are invalid.");
+
+        if (logout != null)
+            model.addAttribute("msg", "You have been logged out successfully.");
+
+        return "login";
     }
 }
 

@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.hateoas.RepresentationModel;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.persistence.*;
 
@@ -28,36 +27,46 @@ public class Property extends RepresentationModel<Property> {
             generator = "property_sequence"
     )
     private Long id;
-    @Column(name="property_type", nullable = false)
+    @Column(name="property_type")
     private String type;
-    @Column(name="purpose", nullable = false)
+    @Column(name="sub_Type")
+    private String subType;
+    @Column(name="purpose")
     private String purpose;
-    @Column(name="status", nullable = false)
+    @Column(name="status")
     private String status;
-    @Column(name="bedroom_number", nullable = false)
+    @Column(name="bedroom_number")
     private String bedroomNo;
-    @Column(name="bathroom_No", nullable = false)
+    @Column(name="bathroom_No")
     private String bathroomNo;
-    @Column(name="toilet_number", nullable = false)
+    @Column(name="toilet_number")
     private String toiletNo;
-    @Column(name="price", nullable = false)
+    @Column(name="size")
+    private String Size;
+    @Column(name="price")
     private String price;
-    @Column(name="title", nullable = false)
+    @Column(name="title")
     private String title;
-    @Column(name="agent_name", nullable = false)
+    @Column(name="agent_name")
     private String agentName;
-    @Column(name="description", nullable = false)
+    @Column(name="description")
     private String description;
-    @Column(name="agent_number", nullable = false)
+    @Column(name="agent_number")
     private String agentNumber;
-    @Column(name="url", nullable = false)
-    private CommonsMultipartFile url;
-    @Column(name="location", nullable = false)
-    private String location;
-    @Column(name="locate_state", nullable = false)
+    @Column(name="url")
+    private String url;
+    @Column(name="locality" ,nullable=false)
+    private String locality;
+    @Column(name="locate_state")
     private String state;
-    @Column(name="locate_area", nullable = false)
+    @Column(name="locate_area")
     private String area;
-    @Column(name="locate_street", nullable = false)
+    @Column(name="locate_street")
     private String streetName;
+    @Column(name="youtube_link")
+    private String youtubeLink;
+
+
+    public Property(String filename, String url) {
+    }
 }

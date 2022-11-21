@@ -24,14 +24,20 @@ public class User extends RepresentationModel<User> implements UserDetails {
     private String firstName;
     @Column(name = "last_name",  length = 20)
     private String lastName;
-    @Column(nullable = false, unique = false, length = 45)
+    @Column( unique = false, length = 45)
     private String email;
-    @Column(name="Password", nullable = false, unique = true)
+    @Column(name="Password",  unique = true)
     private String password;
-    @Column(name = "gender_title",nullable = true)
+    @Column(name = "gender_title")
     private String genderTitle;
-    @Column(name = "signup_as", nullable = true)
+    @Column(name = "signup_as")
     private String signUpAs;
+    private String state;
+    private String city;
+
+    private String locality;
+
+    private String zip;
     @Column(name="update_reset_password_token")
     private String resetPasswordToken;
     private boolean accountNonLocked;
@@ -44,13 +50,20 @@ public class User extends RepresentationModel<User> implements UserDetails {
             String email,
             String password,
             String genderTitle,
-            String signUpAs) {
+            String signUpAs,
+            String state,
+            String city,
+            String zip) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.genderTitle=genderTitle;
         this.signUpAs = signUpAs;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+
     }
 
 

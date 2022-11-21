@@ -25,6 +25,38 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>3.0-alpha-1</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+
 		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
@@ -51,6 +83,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
 		<dependency>
@@ -91,14 +128,14 @@
 			<artifactId>spring-hateoas</artifactId>
 			<version>1.5.1</version>
 		</dependency>-->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.hateoas</groupId>
 			<artifactId>spring-hateoas</artifactId>
 			<version>1.5.2</version>
 		</dependency>
 
 
-		<!--<dependency>
+		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.13.4</version>
@@ -117,6 +154,13 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<classifier>exec</classifier>
+					<requiresUnpack>
+						<dependency>
+							<groupId>org.jruby</groupId>
+							<artifactId>jruby-complete</artifactId>
+						</dependency>
+					</requiresUnpack>
 					<excludes>
 						<exclude>
 							<groupId>org.project.lombok</groupId>

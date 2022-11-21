@@ -1,6 +1,8 @@
 package com.example.property.controller;
 
+import com.example.property.dto.BlogDto;
 import com.example.property.entity.Blog;
+import com.example.property.repository.BlogRepository;
 import com.example.property.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,54 +15,62 @@ import java.util.Optional;
 
 @Controller
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
+@RequestMapping("/blog")
 public class BlogController {
     @Autowired
   private BlogService blogService;
 
+    @Autowired
+    private BlogRepository blogRepository;
 
-    @CrossOrigin
-    @RequestMapping(value = "/1$/post", method =RequestMethod.POST)
-    public Blog save(@ModelAttribute Blog blog) {
-        Blog newBlog=  blogService.save(blog);
+    @PostMapping("/post")
+    public ResponseEntity<Blog> save(@ModelAttribute("blog") BlogDto blog) {
+        System.out.println("Am inside blog controller");
+        ResponseEntity<Blog> newBlog =  blogService.save(blog);
         return newBlog;
     }
 
     @CrossOrigin
-    @GetMapping("/2$/blog")
+    @GetMapping("/find-all-post")
     public ResponseEntity<List<Blog>> findAllPost() {
         ResponseEntity<List<Blog>> list = blogService.findAll();
         return list;
 
     }
-    @CrossOrigin
-    @GetMapping("/3$/{tagName}")
+
+    @GetMapping("/find-by/{tagName}")
     public ResponseEntity<List<Blog>> findBlogByTagName(@PathVariable String tagName) {
         ResponseEntity<List<Blog>> list = blogService.findBlogByTagName(tagName);
         return  list;
     }
 
-    @CrossOrigin
-    @GetMapping("/$0/{id}")
+
+    @GetMapping("/find-by-id/{id}")
     public Optional<Blog> findById(@PathVariable Long id){
-            Optional<Blog> findById = blogService.findById(id);
-            return findById;
+          Optional<Blog> postId = blogService.findById(id);
+
+            return postId;
         }
 
-    @CrossOrigin
-    @PutMapping("/4$/{title}")
-    public Blog updateBlog(@RequestBody Blog blog) {
-        Blog update = blogService.save(blog);
+    private Class getOne(Long id) {
+        return getOne(id);
+    }
+
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Blog> updateBlog(@PathVariable("id") Long blogId, @RequestBody BlogDto blog) {
+        ResponseEntity<Blog> update = blogService.save(blog);
         return update;
     }
 
-    @DeleteMapping("/5$/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteBlog(@PathVariable Long id){
-        Optional<Blog> delete= blogService.deleteById(id);
+        String delete= blogService.deleteById(id);
         return "deleted successfully";
     }
 
-    @GetMapping("/$6/showBlogForm")
-    public String showPostProperty(Model model) {
+    @GetMapping("/form")
+    public String showBlogForm(Model model) {
         model.addAttribute("blog", new Blog());
         return "Post form";
     }

@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.hateoas.RepresentationModel;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.persistence.*;
 
@@ -14,10 +13,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Builder
+
 public class Blog extends RepresentationModel<Blog> {
 
 
-    @javax.persistence.Id
+    @Id
     @SequenceGenerator(
             name="blog_sequence",
             sequenceName="blog_sequence",
@@ -28,14 +28,15 @@ public class Blog extends RepresentationModel<Blog> {
             generator = "blog_sequence"
     )
     private Long id;
-    @Column(name="post_title", nullable = false)
+    @Column(name="post_title")
     private String title;
-    @Column(name="url", nullable = false)
-    private CommonsMultipartFile url;
-    @Column(name="post_description", nullable = false)
+    @Column(name="url")
+    private  String url;
+    @Column(name="post_description")
     private String description;
-    @Column(name="post_tagName", nullable = false)
+    @Column(name="post_tagName")
     private String tagName;
-    @Column(name="post_publisher", nullable=false)
+    @Column(name="post_publisher")
     private String publisher;
+
 }

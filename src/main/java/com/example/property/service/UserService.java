@@ -16,5 +16,6 @@ public interface UserService {
    public String showResetPasswordForm(String token, Model model);
 
     public String processResetPassword(HttpServletRequest request, Model model);
+    public void updatePassword(String user, Long newPassword);
 
 }

@@ -28,7 +28,6 @@ class PropertyRepositoryTest {
                 .agentName("Olawale")
                 .agentNumber("07088300300")
                 .description("THIS IS A DEPLEX HOUSE LOCATED IN AJA WHICH GOES FOR #3000,000,000 IF YOU ARE INTERESTED PS CONTACT ME")
-                .location("London")
                 .price("90,000,000,000,000,000")
                 .title("Mansion House")
                 .type("Mansion")

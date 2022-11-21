@@ -1,16 +1,13 @@
 package com.example.property.service;
 
 import com.example.property.entity.User;
-import com.example.property.entity.Utility;
 import com.example.property.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
-import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,10 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -108,16 +102,16 @@ public  class  UserServiceImpl implements UserService, UserDetailsService {
         return usersRepository.findByResetPasswordToken(token);
     }
 
-    public void updatePassword(User user, String newPassword){
+   /* public void updatePassword(String user, Long newPassword){
         BCryptPasswordEncoder passwordEncoder= new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(newPassword);
         user.setPassword(encodedPassword);
 
         user.setResetPasswordToken(null);
         usersRepository.save(user);
-    }
+    }*/
 
-    public String processForgetPassword(HttpServletRequest request, Model model) throws UnsupportedEncodingException, MessagingException {
+   /* public String processForgetPassword(HttpServletRequest request, Model model) throws UnsupportedEncodingException, MessagingException {
         String email = request.getParameter("email");
         String token = RandomString.make(30);
         try {
@@ -130,8 +124,8 @@ public  class  UserServiceImpl implements UserService, UserDetailsService {
             model.addAttribute("error", ex.getMessage());
         }
         return "forgot_password_form";
-    }
-    private void sendEmail(String recipientEmail, String link) throws MessagingException, UnsupportedEncodingException {
+    }*/
+    /*private void sendEmail(String recipientEmail, String link) throws MessagingException, UnsupportedEncodingException {
 
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
@@ -153,7 +147,7 @@ public  class  UserServiceImpl implements UserService, UserDetailsService {
         mailSender.send(message);
 
     }
-
+*/
     @Override
     public String showResetPasswordForm(String token, Model model) {
         String user = usersRepository.getByResetPasswordToken(token);
@@ -181,6 +175,11 @@ public  class  UserServiceImpl implements UserService, UserDetailsService {
             model.addAttribute("message", "You have successfully changed your password.");
         }
         return "message";
+    }
+
+    @Override
+    public void updatePassword(String user, Long newPassword) {
+
     }
 
 
