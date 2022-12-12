@@ -9,17 +9,17 @@ import javax.annotation.Resource;
 
 
 @SpringBootApplication
-public class PropertyApplication /*implements CommandLineRunner*/ {
-	/*@Resource
-	PropertyServiceImpl propertyService;*/
+public class PropertyApplication implements CommandLineRunner {
+	@Resource
+	PropertyServiceImpl propertyService;
 	public static void main(String[] args) {
 		SpringApplication.run(PropertyApplication.class, args);
 	}
 
-	/*@Override
+	@Override
 	public void run(String... arg) throws Exception {
 		//propertyService.deleteAll();
-		//propertyService.init();
-	}*/
+		propertyService.init();
+	}
 
 }

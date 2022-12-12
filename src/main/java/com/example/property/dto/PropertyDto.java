@@ -40,6 +40,12 @@ import org.springframework.web.multipart.MultipartFile;
 
         private MultipartFile url;
 
+        private MultipartFile image1;
+
+        private MultipartFile image2;
+
+        private MultipartFile image3;
+
         private String locality;
 
         private String state;

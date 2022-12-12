@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.hateoas.RepresentationModel;
+import org.springframework.http.HttpStatus;
 
 import javax.persistence.*;
 
@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Data
 
 @Builder
-public class Property extends RepresentationModel<Property> {
+public class Property {
 
     @Id
     @SequenceGenerator(
@@ -55,7 +55,13 @@ public class Property extends RepresentationModel<Property> {
     private String agentNumber;
     @Column(name="url")
     private String url;
-    @Column(name="locality" ,nullable=false)
+    @Column(name="image1")
+    private String image1;
+    @Column(name="image2")
+    private String image2;
+    @Column(name="image3")
+    private String image3;
+    @Column(name="locality")
     private String locality;
     @Column(name="locate_state")
     private String state;
@@ -68,5 +74,9 @@ public class Property extends RepresentationModel<Property> {
 
 
     public Property(String filename, String url) {
+    }
+
+
+    public String Property(HttpStatus noContent) { return "No Property Available For Your Search Content";
     }
 }
